@@ -2,5 +2,5 @@ public class Main {
 }
 void push (){
 
-void main() {
+void pop() {
 }
