@@ -12,7 +12,7 @@ public class MyStack {
         }
     }
 
-    public int pop() {
+    public int pop(5) {
         if (top == -1) {
             System.out.println("Stack Underflow");
             return -1;
