@@ -1,43 +1,39 @@
 public class MyStack {
 
-    int[] stack = new int[5];
-    int top = -1;
+    private int stackPointer;
+    private int[] elements;
 
-    public void push(int value) {
-        if (top == stack.length - 1) {
-            System.out.println("Stack Overflow");
-        } else {
-            top++;
-            stack[top] = value;
-        }
+    public MyStack(int size) {
+        elements = new int[size];
+        stackPointer = -1;
     }
 
-    public int pop(5) {
-        if (top == -1) {
-            System.out.println("Stack Underflow");
-            return -1;
-        } else {
-            int value = stack[top];
-            top--;
-            return value;
+    public int top() {
+        if (isEmpty()) {
+            throw new RuntimeException("Stack is empty");
         }
+        return elements[stackPointer];
     }
 
-    public int peek() {
-        if (top == -1) {
-            return -1;
+    public void push(int n) {
+        if (stackPointer == elements.length - 1) {
+            throw new RuntimeException("Stack is full");
         }
-        return stack[top];
+        elements[++stackPointer] = n;
     }
 
-    public static void main(String[] args) {
-        MyStack s = new MyStack();
+    public void pop() {
+        if (isEmpty()) {
+            throw new RuntimeException("Stack is empty");
+        }
+        stackPointer--;
+    }
 
-        s.push(10);
-        s.push(20);
-        s.push(30);
+    public boolean isEmpty() {
+        return stackPointer == -1;
+    }
 
-        System.out.println(s.pop());
-        System.out.println(s.peek());
+    public int getSize() {
+        return stackPointer + 1;
     }
 }
